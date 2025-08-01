@@ -1,31 +1,17 @@
-# Express.js + PostgreSQL API
+# Express PostgreSQL API
 
-## Features
-- CRUD operations for users
-- PostgreSQL database connection
-- Basic error handling
+## Description
+This project is a mini REST API built with Express.js and PostgreSQL. It demonstrates basic CRUD operations for a "users" table.
 
 ## Setup Instructions
 
-1. Clone the repo
-2. Create `.env` file:
-```
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=your_password
-DB_DATABASE=express_api
-```
+### 1. Install PostgreSQL and create the database:
 
-3. Install dependencies:
-```
-npm install
-```
-
-4. Create PostgreSQL database and table:
 ```sql
-CREATE DATABASE express_api;
-\c express_api
+CREATE DATABASE your_database;
+
+\c your_database
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   name VARCHAR(100),
@@ -34,14 +20,47 @@ CREATE TABLE users (
 );
 ```
 
-5. Start the server:
-```
-node server.js
+### 2. Clone the project and install dependencies
+
+```bash
+npm install
 ```
 
-6. Test API with Postman or curl:
-- GET /users
-- GET /users/:id
-- POST /users
-- PUT /users/:id
-- DELETE /users/:id
+### 3. Configure `.env` file
+
+```env
+PGHOST=localhost
+PGUSER=postgres
+PGDATABASE=your_database
+PGPASSWORD=your_password
+PGPORT=5432
+PORT=3000
+```
+
+### 4. Run the server
+
+```bash
+npm start
+```
+
+## API Endpoints
+
+- GET `/users` – Fetch all users
+- GET `/users/:id` – Fetch a user by ID
+- POST `/users` – Create a new user
+- PUT `/users/:id` – Update an existing user
+- DELETE `/users/:id` – Remove a user
+
+## Sample POST Body
+
+```json
+{
+  "name": "Alice",
+  "email": "alice@example.com",
+  "age": 30
+}
+```
+
+## Testing
+
+Use Postman or similar API clients to test all endpoints.
